@@ -47,12 +47,12 @@ public class Employee {
     public void setSalary(float salary) {
         this.salary = salary;
     }
+    public String getFullName() {
+        return this.lastName + " " + this.firstName + " "+ this.patronymic;
+    }
     @Override
     public String toString() {
-        return "ФИО сотрудника: " + this.lastName + " " + this.firstName + " "+ this.patronymic + ". Работает в отделе номер " + this.department + ". Получает " + this.salary + " рублей. ID сотрудника: " + this.id;
+        return "ФИО сотрудника: " +  getFullName() + ". Работает в отделе номер " + this.department + ". Получает " + this.salary + " рублей. ID сотрудника: " + this.id;
     }
 
-    public String getFullName() {
-        return "Ф.И.О сотрудника: " + this.lastName + " " + this.firstName + " "+ this.patronymic;
-    }
 }
