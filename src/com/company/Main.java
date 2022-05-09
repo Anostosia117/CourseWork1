@@ -1,45 +1,49 @@
 package com.company;
 public class Main {
     private static Employee[] employee = new Employee[10];{
-        System.out.println(employee);
     }
-
-    private static float sumInMonths(Employee[] employee, float sum) {
+    private static void printEmployee (Employee[] employee) {
+        for (int i = 0; i < employee.length; i++) {
+            System.out.println(employee[i]);
+        }
+    }
+    private static float sumInMonths () {
+        float sum = 0;
         for (int i = 0; i < employee.length; i++) {
             sum = sum + employee[i].getSalary();
         }
-        System.out.println("Сумма затрат на зарплаты в месяц составляет " + sum);
         return sum;
     }
-    private static float findMinSalary(Employee[] employees, float min) {
-        min = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++)
-            if (employees[i].getSalary() < min) {
-                min = employees[i].getSalary();
+    private static float findMinSalary () {
+        float min = 0;
+        min = employee[0].getSalary();
+        for (int i = 0; i < employee.length; i++)
+            if (employee[i].getSalary() < min) {
+                min = employee[i].getSalary();
             }
         System.out.println("Минимальная зарплата сотрудника в компании: " + min);
         return min;
     }
-    private static float findMaxSalary(Employee[] employees, float max) {
-        max = employees[0].getSalary();
-        for (int i = 0; i < employees.length; i++)
-            if (employees[i].getSalary() > max) {
-                max = employees[i].getSalary();
+    private static float findMaxSalary() {
+        float max = 0;
+        max = employee[0].getSalary();
+        for (int i = 0; i < employee.length; i++)
+            if (employee[i].getSalary() > max) {
+                max = employee[i].getSalary();
             }
         System.out.println("Максимальная зарплата сотрудника в компании: " + max);
         return max;
     }
-    private static float findMiddleSalary(Employee[] employees, float middle, float sum) {
-        for (int i = 0; i < employee.length; i++) {
-            sum = sum + employee[i].getSalary();
-        }
-        for (int i = 0; i < employee.length; i++) {
-            middle = sum / employee.length;
-        }
+    private static float findMiddleSalary () {
+        float sum = sumInMonths();
+        float middle = sumInMonths() / employee.length;
+        System.out.println("Сумма затрат на зарплаты в месяц: " + sum);
+        System.out.println();
         System.out.println("Среднее значение зарплат в компании: " + middle);
         return middle;
     }
-    private static String fullName (Employee[] employee, String fullName) {
+    private static String fullName () {
+        String fullName = null;
         for (int i = 0; i < employee.length; i++) {
             fullName = employee[i].getFullName();
             System.out.println(fullName);
@@ -58,33 +62,16 @@ public class Main {
         employee[7] = new Employee("Шамшура", "Анна", "Павловна", 3, 87123);
         employee[8] = new Employee("Холодова", "Анастасия", "Александровна", 1, 435211);
         employee[9] = new Employee("Толстой", "Лев", "Николаевич", 2, 44444);
-        for (int i = 0; i < employee.length; i++) {
-            System.out.println(employee[i]);
-        }
+
+        printEmployee(employee);
         System.out.println();
-
-        float sum = 0;
-        sumInMonths(employee, sum);
-
+        findMinSalary();
         System.out.println();
-
-        float min = 0;
-        findMinSalary(employee, min);
-
+        findMaxSalary();
         System.out.println();
-
-        float max = 0;
-        findMaxSalary(employee, max);
-
+        findMiddleSalary();
         System.out.println();
-
-        float middle = 0;
-        findMiddleSalary(employee, middle, sum);
-
-        System.out.println();
-
-        String fullName = null;
-        fullName(employee, fullName);
+        fullName();
     }
 }
 
